@@ -18,10 +18,10 @@ class CreateSchoolTable extends Migration
             $table->string("name");
             $table->string("address");
             $table->string("phone");
-            $table->bigInteger('departament_id')->unsigned();
-            $table->foreign('departament_id')
+            $table->bigInteger('country_id')->unsigned();
+            $table->foreign('country_id')
                 ->references('id')
-                ->on('departaments');
+                ->on('countries');
             $table->timestamps();
         });
     }

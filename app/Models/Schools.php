@@ -13,6 +13,6 @@ class Schools extends Model
         'name',
         'address',
         'phone',
-        'departament_id'
+        'country_id'
     ];
 }
