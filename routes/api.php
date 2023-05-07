@@ -40,3 +40,7 @@ Route::put('schools/{id}', [SchoolsController::class, 'update']);
 Route::delete('schools/{id}', [SchoolsController::class, 'destroy']);
 
 Route::post('users',[UsersController::class, 'store']);
+Route::get('users/{id}', [UsersController::class, 'show']);
+Route::get('users', [UsersController::class, 'index']);
+Route::put('users/{id}', [UsersController::class, 'update']);
+Route::delete('users/{id}', [UsersController::class, 'destroy']);

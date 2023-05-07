@@ -15,7 +15,14 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $users = User::all();
+            return response()->json($users, 200);
+        } catch (\Throwable $th){
+            return response()->json([
+                'errors' => $th
+            ], 403);
+        }
     }
 
     /**
@@ -54,7 +61,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+            $user = User::find($id);
+            return response()->json($user, 200);
+        } catch (\Throwable $th){
+            return response()->json([
+                'errors' => $th
+            ], 400);
+        }
     }
 
     /**
@@ -77,7 +91,14 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $user = User::find($id)->update($request->all());
+            return response()->json($user, 200);
+        } catch (\Throwable $th){
+            return response()->json([
+                'errors' => $th
+            ], 400);
+        }
     }
 
     /**
@@ -88,6 +109,15 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $user = User::find($id)->delete();
+            return response()->json([
+                'message' => 'Usuario eliminado con exito!'
+            ], 202 );
+        } catch (\Throwable $th){
+            return response()->json([
+                'errors' => $th
+            ], 400);
+        }
     }
 }
