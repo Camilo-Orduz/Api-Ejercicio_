@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CountriesController;
+use App\Http\Controllers\Api\DepartamentsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,3 +24,9 @@ Route::get('countries', [CountriesController::class, 'index']);
 Route::get('countries/{id}', [CountriesController::class, 'show']);
 Route::put('countries/{id}', [CountriesController::class, 'update']);
 Route::delete('countries/{id}', [CountriesController::class, 'destroy']);
+
+Route::post('departaments', [DepartamentsController::class, 'store']);
+Route::get('departaments/{id}', [DepartamentsController::class, 'show']);
+Route::get('departaments', [DepartamentsController::class, 'index']);
+Route::put('departaments/{id}', [DepartamentsController::class, 'update']);
+Route::delete('departaments/{id}', [DepartamentsController::class, 'destroy']);
