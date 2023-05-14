@@ -15,4 +15,5 @@ class Schools extends Model
         'phone',
         'country_id'
     ];
+    protected $table='schools';  
 }

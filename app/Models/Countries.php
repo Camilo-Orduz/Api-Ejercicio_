@@ -14,4 +14,6 @@ class Countries extends Model
         'flag',
         'capital'
     ];
+
+    protected $table='pais';
 }

@@ -120,4 +120,55 @@ class UsersController extends Controller
             ], 400);
         }
     }
+    public function solution4($User_id) {
+        try {
+          $users = User::select('users.names','users.lastnames','schools.name as escuela')->join('schools','users.school_id', '=', 'schools.id')->where('schools.id', $User_id)->get();
+          return response()->json([
+             $users
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([     
+              'errors'=> $th
+           ],400);
+        }
+    }
+    public function solution5($User_id) {
+        try {
+          $users = User::select('users.names','users.lastnames','countries.name as pais')->join('departaments','users.departament_id', '=', 'departaments.id')
+                                                                                        ->join('countries', 'departaments.country_id', '=', 'countries.id')
+                                                                                        ->where('countries.id', $User_id)->get();
+          return response()->json([
+             $users
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([     
+              'errors'=> $th
+           ],400);
+        }
+    }
+
+    public function solution6(){
+        try{
+            $users = User::select('users.names', 'users.lastnames', 'users.email')->where('users.email', 'LIKE', '%gmail.com')->get();
+            return response()->json([$users], 200);
+        }catch (\Throwable $th) {
+        return response()->json([     
+            'errors'=> $th
+            ],400);
+              
+        }
+    }
+
+    
+    public function solution7(){
+        try{
+            $users = User::select('users.names', 'users.lastnames', User::raw('DATEDIFF(CONCAT(YEAR(CURDATE()), "-", MONTH(date_birth), "-", DAY(date_birth)), CURDATE()) as dias_faltantes_para_cumplir_años'))->get();
+            return response()->json([$users], 200);
+        }catch (\Throwable $th) {
+        return response()->json([     
+            'errors'=> $th
+            ],400);
+              
+        }
+    }
 }

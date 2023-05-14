@@ -120,5 +120,33 @@ class SchoolsController extends Controller
             ], 400);
         }
     }
+
+    public function solution3($School_id) {
+        try {
+          $schools = Schools::select('name')->where('country_id', $School_id)->get();
+          return response()->json([
+             $schools
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([     
+              'errors'=> $th
+           ],400);
+        }
+    }
+
+    public function solution8() {
+        try {
+          $schools = Schools::select('schools.name', Schools::raw('COUNT(*) as total_usuarios'))->join('users', 'users.school_id', '=', 'schools.id')
+                                ->groupby('schools.name')->get();
+          return response()->json([
+             $schools
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([     
+              'errors'=> $th
+           ],400);
+        }
+    }
     
+
 }

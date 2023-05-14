@@ -120,4 +120,28 @@ class DepartamentsController extends Controller
             ], 400);
         }
     }
+    public function solution1($countrie_id) {
+        try {
+          $departments = Departaments::select('name')->where('country_id', $countrie_id)->get();
+          return response()->json([
+             $departments
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([
+              'errors'=> $th
+           ],400);
+        }
+  }
+    public function solution2($countrie_id) {
+        try {
+          $departaments = Departaments::select('name')->where('country_id', $countrie_id)->count();
+          return response()->json([
+             $departaments
+          ],200);
+        } catch (\Throwable $th) {
+          return response()->json([
+              'errors'=> $th
+           ],400);
+        }
+    }
 }

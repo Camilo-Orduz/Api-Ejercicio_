@@ -44,3 +44,12 @@ Route::get('users/{id}', [UsersController::class, 'show']);
 Route::get('users', [UsersController::class, 'index']);
 Route::put('users/{id}', [UsersController::class, 'update']);
 Route::delete('users/{id}', [UsersController::class, 'destroy']);
+
+Route::get('solution2/{id}', [DepartamentsController::class, 'solution2']);
+Route::get('solution1/{id}', [DepartamentsController::class, 'solution1']);
+Route::get('solution3/{id}', [SchoolsController::class, 'solution3']);
+Route::get('solution4/{id}', [UsersController::class, 'solution4']);
+Route::get('solution5/{id}', [UsersController::class, 'solution5']);
+Route::get('solution6', [UsersController::class, 'solution6']);
+Route::get('solution7', [UsersController::class, 'solution7']);
+Route::get('solution8', [SchoolsController::class, 'solution8']);
